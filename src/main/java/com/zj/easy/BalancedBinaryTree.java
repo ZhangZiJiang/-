@@ -72,9 +72,9 @@ public class BalancedBinaryTree {
 
 
     class Solution {
-//        public boolean isBalanced(TreeNode root) {
-//
-//        }
+        public boolean isBalanced(TreeNode root) {
+            return false;
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
