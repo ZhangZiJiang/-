@@ -58,6 +58,19 @@ public class ErChaShuDeShenDuLcof {
             return helper(root);
         }
 
+        /**
+         * 总结一下吧，一开始就想到了使用后序遍历，
+         * 并且肯定要定义两个变量来分别记录左右的自己的深度，
+         * 问题是当深度加一的时候，我们在哪加这个1，
+         * 刚开始我在左右都加了1，这显然是不对的，就会造成重复加1 的情况
+         * 然后我就认为这条路不行
+         * 然而我错了。。。
+         * 其实整体思路没问题，用后序遍历 BFS 是可以解答出来的，
+         * 那这个1 加在哪呢
+         * 没错，加在返回上，判断左右谁大，然后在返回前去加这个1。
+         * @param root
+         * @return
+         */
         private int helper(TreeNode root) {
 
             if (root == null) {
