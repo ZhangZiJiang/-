@@ -97,28 +97,28 @@ public class CongShangDaoXiaDaYinErChaShuLcof{
             return list.stream().mapToInt(Integer::intValue).toArray();
         }
 
-        /**
-         * 这里使用 深度优先 显然是错的
-         * @param root
-         * @return
-         */
-        public List<Integer> helper(TreeNode root){
-
-            if(root == null){
-                return ret;
-            }
-            ret.add(root.val);
-            //记住递归他的子树，！！！！！
-            if(root.left != null){
-                helper(root.left);
-            }
-
-            if(root.right != null){
-                helper(root.right);
-            }
-
-            return ret;
-        }
+//        /**
+//         * 这里使用 深度优先 显然是错的
+//         * @param root
+//         * @return
+//         */
+//        public List<Integer> helper(TreeNode root){
+//
+//            if(root == null){
+//                return ret;
+//            }
+//            ret.add(root.val);
+//            //记住递归他的子树，！！！！！
+//            if(root.left != null){
+//                helper(root.left);
+//            }
+//
+//            if(root.right != null){
+//                helper(root.right);
+//            }
+//
+//            return ret;
+//        }
 
     }
 
@@ -131,5 +131,13 @@ public class CongShangDaoXiaDaYinErChaShuLcof{
      * 这里逐渐清楚了 深度优先（DFS） 和 广度优先（BFS） 的区别在哪里了
      * 这道题实际上就是实现广度优先，在二叉树中，广度优先又被称作是 层序遍历
      * 而 深度优先 在二叉树中是 先序，后序，和中序遍历。
+     */
+
+    /**
+     * 总结一下广度优先，即层序遍历的步骤总结
+     *
+     * 步骤一：检验 tree 是否为null 是直接返回出去
+     * 步骤二：将根节点存入队列中；
+     * 步骤三：根据队列是否为空，循环这个队列 先将队列存储到数组并删除队列，再将有子树就存在队列里边循环遍历
      */
 }

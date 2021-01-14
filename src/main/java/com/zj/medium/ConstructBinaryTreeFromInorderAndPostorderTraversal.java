@@ -49,7 +49,7 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
          */
         public TreeNode process1(int[] porArr, int L, int R) {
             /**
-             * 步骤一：判断数组是否合法
+             * 步骤一：判断数组左右是否合法
              * 首先要判断L > R, 说明数组不只是空了，这个数组已经有问题了
              * 已经无法描述该问题了
              * <p> 这里边 还有另外的判断，在递归的时候，我们需要判断是否还有左右子树时，会走这个逻辑 <p/>
