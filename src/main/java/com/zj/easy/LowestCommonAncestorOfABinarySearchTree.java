@@ -68,18 +68,38 @@ public class LowestCommonAncestorOfABinarySearchTree {
         }
 
 
+        /**
+         * 这个 最近公共祖先 是适用于所有二叉树的。
+         * @param root
+         * @param p
+         * @param q
+         * @return
+         */
         public TreeNode helper(TreeNode root, TreeNode p, TreeNode q) {
             //对于编程，为空的判断是最重要的
             if (root == null || p == root || q == root) {
                 return root;
             }
+
+
             TreeNode left = helper(root.left, p, q);
             TreeNode right = helper(root.right, p, q);
+
+            /**
+             * 这句话起关键作用
+             * 可以说 这句话解决了怎么返回父节点的节点的问题
+             */
             if (left != null && right != null) {
                 return root;
             }
+
             return left != null ? left : right;
         }
+
+
+
+
+
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
