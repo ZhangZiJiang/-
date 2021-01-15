@@ -57,7 +57,7 @@ public class BalancedBinaryTree {
 
 
 //    Definition for a binary tree node.
-    public class TreeNode {
+    private class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
