@@ -74,6 +74,7 @@ public class LegalBinarySearchTreeLcci {
 
         /**
          * 又是这个搜索二叉树的中序遍历
+         * 这道题还有优化的地方
          *
          * @param root
          * @return
