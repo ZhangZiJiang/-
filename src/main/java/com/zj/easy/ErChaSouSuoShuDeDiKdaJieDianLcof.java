@@ -1,7 +1,5 @@
 package com.zj.easy;
 
-import com.zj.medium.ConstructBinaryTreeFromInorderAndPostorderTraversal;
-
 import java.util.ArrayList;
 
 /**
