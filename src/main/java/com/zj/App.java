@@ -1,11 +1,7 @@
 package com.zj;
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import java.util.HashMap;
-
+import java.util.ArrayList;
 
 /**
  * Hello world!
@@ -13,15 +9,11 @@ import java.util.HashMap;
 public class App {
 
 
-    public static int add(int a, int b) {
-        return a + b;
-    }
-
     public static void main(String[] args) {
-        App app = null;
-        System.out.println(app.add(10, 20));
-
-        Log log = LogFactory.getLog("jcl");
-        log.info("hello");
+        ArrayList<Integer> list = new ArrayList();
+        list.add(1);
+        int[] arr = list.stream().mapToInt(Integer::intValue).toArray();
+        System.out.println(arr.length);
     }
+
 }
