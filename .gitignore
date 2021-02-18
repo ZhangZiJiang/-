@@ -2,7 +2,6 @@
 # 忽略 target/ 文件夹下的所有文件
 /target/
 # 忽略 .idea/ 文件夹下的所有文件
-/.idea/leetcode/
-/.idea/inspectionProfiles/
+/.idea/
 
 
