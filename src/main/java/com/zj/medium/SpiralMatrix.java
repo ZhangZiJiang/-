@@ -56,31 +56,28 @@ public class SpiralMatrix {
             int cellMin = 0;
 
             //行指针
-            int r = 0;
+            int r = -1;
             //列指针
-            int c = 0;
+            int c = -1;
 
             while (rowMax != rowMin || cellMax != cellMin) {
                 //行，从左向右
-                while (r <= rowMax) {
+                while (r < rowMax) {
                     r++;
                     ret.add(matrix[rowMin][r]);
-
-
                 }
                 rowMin++;
 
                 //列，从上向下
-                while (c <= cellMax) {
+                while (c < cellMax) {
                     c++;
-                    ret.add(matrix[c][rowMin]);
-
+                    ret.add(matrix[c][rowMax]);
                 }
                 rowMin++;
 
 
                 //行，从右向左
-                while (r >= rowMin) {
+                while (r > rowMin) {
                     r--;
                     ret.add(matrix[rowMax][r]);
 
@@ -88,7 +85,7 @@ public class SpiralMatrix {
                 rowMax--;
 
                 //列，从下向上
-                while (c >= cellMin) {
+                while (c > cellMin) {
                     c--;
                     ret.add(matrix[c][rowMax]);
 
