@@ -38,6 +38,8 @@ import java.util.List;
 public class SpiralMatrix {
     public static void main(String[] args) {
         Solution solution = new SpiralMatrix().new Solution();
+        int[][] m = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+        System.out.println(solution.spiralOrder(m));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -58,32 +60,38 @@ public class SpiralMatrix {
             //列指针
             int c = 0;
 
-            while (rowMax == rowMin || cellMax == cellMin) {
+            while (rowMax != rowMin || cellMax != cellMin) {
                 //行，从左向右
                 while (r <= rowMax) {
-                    ret.add(matrix[r][rowMin]);
                     r++;
+                    ret.add(matrix[rowMin][r]);
+
+
                 }
                 rowMin++;
 
                 //列，从上向下
                 while (c <= cellMax) {
-                    ret.add(matrix[rowMin][c]);
                     c++;
+                    ret.add(matrix[c][rowMin]);
+
                 }
                 rowMin++;
 
 
                 //行，从右向左
                 while (r >= rowMin) {
-                    ret.add(matrix[r][rowMax]);
                     r--;
+                    ret.add(matrix[rowMax][r]);
+
                 }
                 rowMax--;
 
                 //列，从下向上
                 while (c >= cellMin) {
-                    ret.add(matrix[rowMax][c]);
+                    c--;
+                    ret.add(matrix[c][rowMax]);
+
                 }
                 cellMax--;
             }
