@@ -1,8 +1,10 @@
 package com.zj.medium;
 
+import java.util.Arrays;
+
 /**
- * @program: algorithm
- * @description:
+ * @program algorithm
+ * @description: 396. 旋转函数
  * 给定一个长度为 n 的整数数组 A 。
  *
  * 假设 Bk 是数组 A 顺时针旋转 k 个位置后的数组，我们定义 A 的“旋转函数” F 为：
@@ -28,32 +30,44 @@ package com.zj.medium;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/rotate-function
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- * @author: Zhang Bo
- * @create: 2021-03-01 19:17
- **/
+ * @author: zhangbo
+ * @create: 2021/03/01 22:14
+ */
 public class RotateFunction{
     public static void main(String[] args) {
         Solution solution = new RotateFunction().new Solution();
+        int[] A = new int[]{4,3,2,6};
+        System.out.println(solution.maxRotateFunction(A));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxRotateFunction(int[] A) {
             return helper(A);
-
         }
 
-        public int helper(int[] A){
+        private int helper(int[] A){
+            if(A.length == 0){
+                return 0;
+            }
             int count = A.length;
+
             int max = Integer.MIN_VALUE;
             for (int i = 0; i < count; i++) {
                 int sum = 0;
-                for (int j = count - 1; j > 1; j++) {
+                for (int j = count - 1; j > 0; j--) {
                     int temp = A[j];
                     A[j] = A[j - 1];
                     A[j - 1] = temp;
+                    sum += (A[j] * j);
+                }
+                if(max < sum){
+                    max = sum;
                 }
             }
+
+            return max;
         }
+
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
