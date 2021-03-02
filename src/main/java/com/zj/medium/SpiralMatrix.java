@@ -1,6 +1,7 @@
 package com.zj.medium;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -38,62 +39,41 @@ import java.util.List;
 public class SpiralMatrix {
     public static void main(String[] args) {
         Solution solution = new SpiralMatrix().new Solution();
-        int[][] m = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+        int[][] m = new int[][]{{1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}};
         System.out.println(solution.spiralOrder(m));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public List<Integer> spiralOrder(int[][] matrix) {
-            return helper(matrix);
-        }
-
-        private List<Integer> helper(int[][] matrix) {
-            List<Integer> ret = new ArrayList<>();
-            int rowMax = matrix[0].length - 1;
-            int cellMax = matrix.length - 1;
-            int rowMin = 0;
-            int cellMin = 0;
-
-            //行指针
-            int r = -1;
-            //列指针
-            int c = -1;
-
-            while (rowMax != rowMin || cellMax != cellMin) {
-                //行，从左向右
-                while (r < rowMax) {
-                    r++;
-                    ret.add(matrix[rowMin][r]);
+            if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+                return new LinkedList<>();
+            int l = 0;
+            int r = matrix[0].length - 1;
+            int u = 0;
+            int d = matrix.length - 1;
+            List<Integer> list = new LinkedList<>();
+            while (l <= r && u <= d) {
+                for (int i = l; i <= r; i++) {
+                    list.add(matrix[u][i]);
                 }
-                rowMin++;
-
-                //列，从上向下
-                while (c < cellMax) {
-                    c++;
-                    ret.add(matrix[c][rowMax]);
+                u++;
+                for (int i = u; i <= d; i++) {
+                    list.add(matrix[i][r]);
                 }
-                rowMin++;
-
-
-                //行，从右向左
-                while (r > rowMin) {
-                    r--;
-                    ret.add(matrix[rowMax][r]);
-
+                r--;
+                for (int i = r; i >= l && u <= d; i--) {
+                    list.add(matrix[d][i]);
                 }
-                rowMax--;
-
-                //列，从下向上
-                while (c > cellMin) {
-                    c--;
-                    ret.add(matrix[c][rowMax]);
-
+                d--;
+                for (int i = d; i >= u && l <= r; i--) {
+                    list.add(matrix[i][l]);
                 }
-                cellMax--;
+                l++;
             }
-
-            return ret;
+            return list;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
