@@ -1,10 +1,13 @@
 package com.zj.medium;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @program: algorithm
- * @description: 给你一个正整数 n ，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
+ * @description: 59. 螺旋矩阵 II
+ * 给你一个正整数 n ，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
  * <p>
  * <p>
  * <p>
@@ -36,39 +39,29 @@ public class SpiralMatrixIi {
         private int[][] helper(int n) {
             int[][] arr = new int[n][n];
             int num = 1;
-            int r = 0;
-            int c = 0;
-            /**
-             * 第一次
-             * r = 0
-             * c = 1
-             */
-            while (true){
-                for (; r < n - c; r++) {
-                    arr[c][r] = num++;
+            int l = 0;
+            int r = arr[0].length - 1;
+            int u = 0;
+            int d = arr.length - 1;
+            while (l <= r && u <= d) {
+                for (int i = l; i <= r; i++) {
+                    arr[u][i] = num++;
                 }
-                c++;
-                r--;
-                //r=2
-
-                for (; c < n; c++) {
-                    arr[c][r] = num++;
+                u++;
+                for (int i = u; i <= d; i++) {
+                    arr[i][r] = num++;
                 }
                 r--;
-                //c=2
-
-                for (; r >= n - c; r--) {
-                    arr[c][r] = num++;
+                for (int i = r; i >= l && u <= d; i--) {
+                    arr[d][i] = num++;
                 }
-                c--;
-                //r=0
-
-                for (; c >= n - r; c--) {
-                    arr[c][0] = num++;
+                d--;
+                for (int i = d; i >= u && l <= r; i--) {
+                    arr[i][l] = num++;
                 }
-                r++;
-                //c=1
+                l++;
             }
+            return arr;
 
         }
     }
