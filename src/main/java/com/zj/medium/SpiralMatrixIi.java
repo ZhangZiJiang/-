@@ -1,8 +1,6 @@
 package com.zj.medium;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @program: algorithm
