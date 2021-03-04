@@ -39,9 +39,9 @@ public class DiagonalTraverse {
     public static void main(String[] args) {
         Solution solution = new DiagonalTraverse().new Solution();
         int[][] arr = new int[][]{
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 9 }
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
 
         System.out.println(Arrays.toString(solution.findDiagonalOrder(arr)));
@@ -61,7 +61,7 @@ public class DiagonalTraverse {
          * @date: 2021/3/4
          */
         private int[] helper(int[][] matrix) {
-            if(matrix.length == 0 || matrix[0].length == 0){
+            if (matrix.length == 0 || matrix[0].length == 0) {
                 return new int[]{};
             }
             int[] arr = new int[matrix.length * matrix[0].length];
@@ -82,7 +82,7 @@ public class DiagonalTraverse {
                     }
                     flag = false;
                 } else {
-                    for (int j = 0; j <= i; j++) {
+                    for (int j = 0; j <= Math.min(i, c); j++) {
                         if (j <= r && i - j <= c) {
                             arr[num++] = matrix[j][i - j];
                         }
