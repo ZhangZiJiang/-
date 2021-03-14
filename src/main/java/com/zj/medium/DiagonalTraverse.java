@@ -39,9 +39,7 @@ public class DiagonalTraverse {
     public static void main(String[] args) {
         Solution solution = new DiagonalTraverse().new Solution();
         int[][] arr = new int[][]{
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
+                {1, 2, 3}
         };
 
         System.out.println(Arrays.toString(solution.findDiagonalOrder(arr)));
@@ -66,24 +64,36 @@ public class DiagonalTraverse {
             }
             int[] arr = new int[matrix.length * matrix[0].length];
             //true 表示斜向上循环，false 表示斜向下循环
-            boolean flag = true;
+            boolean flag = false;
             //arr的索引
             int num = 0;
             int count = matrix[0].length + matrix.length - 1;
             int r = matrix.length - 1;
             int c = matrix[0].length - 1;
 
-            for (int i = 0; i <= count; i++) {
+            arr[num++] = matrix[0][0];
+            for (int i = 1; i <= count; i++) {
                 if (flag) {
-                    for (int j = i; j >= 0; j--) {
-                        if (j <= r && i - j <= c) {
+
+                    if (i < r) {
+                        for (int j = i; j >= 0; j--) {
+                            arr[num++] = matrix[j][i - j];
+                        }
+                    } else {
+                        for (int j = r; i - j <= c; j--) {
                             arr[num++] = matrix[j][i - j];
                         }
                     }
                     flag = false;
                 } else {
-                    for (int j = 0; j <= Math.min(i, c); j++) {
-                        if (j <= r && i - j <= c) {
+
+
+                    if (i <= c) {
+                        for (int j = 0; j <= Math.min(r,i); j++) {
+                            arr[num++] = matrix[j][i - j];
+                        }
+                    } else {
+                        for (int j = i - c; j <= r; j++) {
                             arr[num++] = matrix[j][i - j];
                         }
                     }
